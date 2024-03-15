@@ -174,86 +174,6 @@
             
 
   
-    <article id="post-house-of-wiki学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-wiki学习以及复现</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-09-03T15:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-03</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="house-of-kiwi"><a href="#house-of-kiwi" class="headerlink" title="house of kiwi"></a>house of kiwi</h3><h4 id="1、setcontext-61的gadget"><a href="#1、setcontext-61的gadget" class="headerlink" title="1、setcontext+61的gadget"></a>1、setcontext+61的gadget</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">68</span>&gt;:    mov    rbx,QWORD PTR [rdx+<span class="number">0x80</span>]</span><br><span class="line">&lt;setcontext+<span class="number">75</span>&gt;:    mov    rbp,QWORD PTR [rdx+<span class="number">0x78</span>]</span><br><span class="line">&lt;setcontext+<span class="number">79</span>&gt;:    mov    r12,QWORD PTR [rdx+<span class="number">0x48</span>]</span><br><span class="line">&lt;setcontext+<span class="number">83</span>&gt;:    mov    r13,QWORD PTR [rdx+<span class="number">0x50</span>]</span><br><span class="line">&lt;setcontext+<span class="number">87</span>&gt;:    mov    r14,QWORD PTR [rdx+<span class="number">0x58</span>]</span><br><span class="line">&lt;setcontext+<span class="number">91</span>&gt;:    mov    r15,QWORD PTR [rdx+<span class="number">0x60</span>]</span><br><span class="line">&lt;setcontext+<span class="number">95</span>&gt;:    test   DWORD PTR fs:<span class="number">0x48</span>,<span class="number">0x2</span></span><br><span class="line">&lt;setcontext+<span class="number">107</span>&gt;:    je     <span class="number">0x7ffff7e31156</span> &lt;setcontext+<span class="number">294</span>&gt;</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br><span class="line">&lt;setcontext+<span class="number">302</span>&gt;:    mov    rsi,QWORD PTR [rdx+<span class="number">0x70</span>]</span><br><span class="line">&lt;setcontext+<span class="number">306</span>&gt;:    mov    rdi,QWORD PTR [rdx+<span class="number">0x68</span>]</span><br><span class="line">&lt;setcontext+<span class="number">310</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0x98</span>]</span><br><span class="line">&lt;setcontext+<span class="number">317</span>&gt;:    mov    r8,QWORD PTR [rdx+<span class="number">0x28</span>]</span><br><span class="line">&lt;setcontext+<span class="number">321</span>&gt;:    mov    r9,QWORD PTR [rdx+<span class="number">0x30</span>]</span><br><span class="line">&lt;setcontext+<span class="number">325</span>&gt;:    mov    rdx,QWORD PTR [rdx+<span class="number">0x88</span>]</span><br><span class="line">&lt;setcontext+<span class="number">332</span>&gt;:    xor    eax,eax</span><br><span class="line">&lt;setcontext+<span class="number">334</span>&gt;:    ret</span><br></pre></td></tr></table></figure>
-
-<p>主要关注的就是：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br></pre></td></tr></table></figure>
-
-<p>布置好rdx+0xa0 以及 rdx+0xa8 也就控制了rsp，后续ret就可以控制程序流了</p>
-<h4 id="2、IO"><a href="#2、IO" class="headerlink" title="2、IO"></a>2、IO</h4><p>也是这周刚好参加国资社畜师傅的课，对IO了解的更详细些，这里是利用<code>_malloc_assert</code>去调用fflush函数，也就会执行跳表中的<code>__sync</code>指针</p>
-<h4 id="3、house-of-kiwi"><a href="#3、house-of-kiwi" class="headerlink" title="3、house of kiwi"></a>3、house of kiwi</h4><p>因为进入IO的<code>__sync</code>之后会发现rdx固定为_IO_helper_jumps，所以控制<code>_IO_helper_jumps+0xa0、_IO_helper_jumps+0xa8</code>去调用setcontext+61就可以控制程序流<img src="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694530611129-f5b45f8c-06f9-4a13-8334-f353c3b1060b.png" alt="img"></p>
-    
-    <a class="article-more-a" href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Dlink-DIR645溢出漏洞复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -586,6 +506,86 @@
     <h3 id="house-of-emma"><a href="#house-of-emma" class="headerlink" title="house of emma"></a>house of emma</h3><p>参考：   <a target="_blank" rel="noopener" href="https://lololo-pwn.github.io/2022/03/15/House-of-Emma/">桥下少年</a><br>emma也是利用house of kiwi的触发assert机制，<br>house of kiwi是去走的<code>fflush--&gt;__sync__</code><br>house of emma 是走的 <code>fxprintf --&gt; __locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code><br>通过修改<code>_IO_file_jumps</code>为<code>_IO_cookie_jumps+offset</code>，使得最后+偏移为<code>_IO_cookie_write</code><br>然后在<code>_IO_cookie_write</code>中会直接调用指针，设置好偏移就可以去控制执行流</p>
     
     <a class="article-more-a" href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-house-of-wiki学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-wiki学习以及复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2023-09-03T15:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="house-of-kiwi"><a href="#house-of-kiwi" class="headerlink" title="house of kiwi"></a>house of kiwi</h3><h4 id="1、setcontext-61的gadget"><a href="#1、setcontext-61的gadget" class="headerlink" title="1、setcontext+61的gadget"></a>1、setcontext+61的gadget</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">68</span>&gt;:    mov    rbx,QWORD PTR [rdx+<span class="number">0x80</span>]</span><br><span class="line">&lt;setcontext+<span class="number">75</span>&gt;:    mov    rbp,QWORD PTR [rdx+<span class="number">0x78</span>]</span><br><span class="line">&lt;setcontext+<span class="number">79</span>&gt;:    mov    r12,QWORD PTR [rdx+<span class="number">0x48</span>]</span><br><span class="line">&lt;setcontext+<span class="number">83</span>&gt;:    mov    r13,QWORD PTR [rdx+<span class="number">0x50</span>]</span><br><span class="line">&lt;setcontext+<span class="number">87</span>&gt;:    mov    r14,QWORD PTR [rdx+<span class="number">0x58</span>]</span><br><span class="line">&lt;setcontext+<span class="number">91</span>&gt;:    mov    r15,QWORD PTR [rdx+<span class="number">0x60</span>]</span><br><span class="line">&lt;setcontext+<span class="number">95</span>&gt;:    test   DWORD PTR fs:<span class="number">0x48</span>,<span class="number">0x2</span></span><br><span class="line">&lt;setcontext+<span class="number">107</span>&gt;:    je     <span class="number">0x7ffff7e31156</span> &lt;setcontext+<span class="number">294</span>&gt;</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br><span class="line">&lt;setcontext+<span class="number">302</span>&gt;:    mov    rsi,QWORD PTR [rdx+<span class="number">0x70</span>]</span><br><span class="line">&lt;setcontext+<span class="number">306</span>&gt;:    mov    rdi,QWORD PTR [rdx+<span class="number">0x68</span>]</span><br><span class="line">&lt;setcontext+<span class="number">310</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0x98</span>]</span><br><span class="line">&lt;setcontext+<span class="number">317</span>&gt;:    mov    r8,QWORD PTR [rdx+<span class="number">0x28</span>]</span><br><span class="line">&lt;setcontext+<span class="number">321</span>&gt;:    mov    r9,QWORD PTR [rdx+<span class="number">0x30</span>]</span><br><span class="line">&lt;setcontext+<span class="number">325</span>&gt;:    mov    rdx,QWORD PTR [rdx+<span class="number">0x88</span>]</span><br><span class="line">&lt;setcontext+<span class="number">332</span>&gt;:    xor    eax,eax</span><br><span class="line">&lt;setcontext+<span class="number">334</span>&gt;:    ret</span><br></pre></td></tr></table></figure>
+
+<p>主要关注的就是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br></pre></td></tr></table></figure>
+
+<p>布置好rdx+0xa0 以及 rdx+0xa8 也就控制了rsp，后续ret就可以控制程序流了</p>
+<h4 id="2、IO"><a href="#2、IO" class="headerlink" title="2、IO"></a>2、IO</h4><p>也是这周刚好参加国资社畜师傅的课，对IO了解的更详细些，这里是利用<code>_malloc_assert</code>去调用fflush函数，也就会执行跳表中的<code>__sync</code>指针</p>
+<h4 id="3、house-of-kiwi"><a href="#3、house-of-kiwi" class="headerlink" title="3、house of kiwi"></a>3、house of kiwi</h4><p>因为进入IO的<code>__sync</code>之后会发现rdx固定为_IO_helper_jumps，所以控制<code>_IO_helper_jumps+0xa0、_IO_helper_jumps+0xa8</code>去调用setcontext+61就可以控制程序流<img src="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694530611129-f5b45f8c-06f9-4a13-8334-f353c3b1060b.png" alt="img"></p>
+    
+    <a class="article-more-a" href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
     
     
 
