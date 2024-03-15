@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472753347-b36ddcfa-9371-4c7d-8ad8-3ecc97ff45ff.png">
 <meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472789314-a1ff6182-692f-4d6c-841e-60fde3f9f42e.png">
 <meta property="article:published_time" content="2023-09-24T15:11:48.000Z">
-<meta property="article:modified_time" content="2024-03-15T12:09:37.642Z">
+<meta property="article:modified_time" content="2024-03-15T14:21:45.006Z">
 <meta property="article:author" content="1uckyc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png">
@@ -207,7 +207,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">993字</span>
+      <span class="post-count">994字</span>
     </span>
   </span>
 
@@ -227,7 +227,9 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="house-of-cat"><a href="#house-of-cat" class="headerlink" title="house of cat"></a>house of cat</h3><p>只要可以largebin（任意地址写入可控地址）就可以实现，要求很低<br>同house of emma，前面的利用链仍然是<code>__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code>，然后利用去调用<code>_IO_default_xsputn</code>时修改vtable在合理范围的偏移去执行我们想要的内容，house of cat利用的是<code>_IO_wfile_seekoff</code>，当然也可以通过FSOP来完成这一步<br><code>_IO_wfile_seekoff ----&gt; _IO_switch_to_wget_mode：</code><br><code>rdi = stderr ---&gt; rax1 = stderr + 0xa0 ----&gt; rax2 = rax1 + 0xe0 ----&gt; call rax2 + 0x18</code><br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png" alt="img"><br>因为rdi是可控的，所以程序流可控且rdx可控，就可以去执行setcontext+orw了</p>
+    <h3 id="house-of-cat"><a href="#house-of-cat" class="headerlink" title="house of cat"></a>house of cat</h3><p>只要可以largebin（任意地址写入可控地址）就可以实现，要求很低<br>同house of emma，前面的利用链仍然是<code>__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code>，然后利用去调用<code>_IO_default_xsputn</code>时修改vtable在合理范围的偏移去执行我们想要的内容，house of cat利用的是<code>_IO_wfile_seekoff</code>，当然也可以通过FSOP来完成这一步</p>
+<span id="more"></span>
+<p><code>_IO_wfile_seekoff ----&gt; _IO_switch_to_wget_mode：</code><br><code>rdi = stderr ---&gt; rax1 = stderr + 0xa0 ----&gt; rax2 = rax1 + 0xe0 ----&gt; call rax2 + 0x18</code><br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png" alt="img"><br>因为rdi是可控的，所以程序流可控且rdx可控，就可以去执行setcontext+orw了</p>
 <h3 id="强网杯2022-house-of-cat"><a href="#强网杯2022-house-of-cat" class="headerlink" title="强网杯2022|house of cat"></a>强网杯2022|house of cat</h3><h4 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> __fastcall __noreturn <span class="title function_">main</span><span class="params">(__int64 a1, <span class="type">char</span> **a2, <span class="type">char</span> **a3)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> s[<span class="number">72</span>]; <span class="comment">// [rsp+0h] [rbp-50h] BYREF</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 v4; <span class="comment">// [rsp+48h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v4 = __readfsqword(<span class="number">0x28</span>u);</span><br><span class="line">  sub_1583();</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_155E();</span><br><span class="line">    c_write(<span class="string">&quot;mew mew mew~~~~~~\n&quot;</span>);</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="number">0x3C</span>uLL);</span><br><span class="line">    read(<span class="number">0</span>, s, <span class="number">0x3B</span>uLL);</span><br><span class="line">    sub_19D6(s);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>需要绕过的判断：</p>
