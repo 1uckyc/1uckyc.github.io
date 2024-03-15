@@ -6,19 +6,44 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://1uckyc.github.io">
-  <title>Archives: 2024 | luckyc&#39;s blog</title>
+  <title>Dlink-DIR815溢出漏洞复现 | luckyc&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Simple sharing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="luckyc&#39;s blog">
-<meta property="og:url" content="https://1uckyc.github.io/archives/2024/index.html">
+  <meta name="description" content="DIR-815溢出漏洞复现漏洞利用分析据漏洞信息漏洞是出现在hedwig.cgi中，hedwig.cgi是指向.&#x2F;htdocs&#x2F;cgibin的符号链接漏洞点主要就是下图中的spriintf没有对string大小进行限制，而v27只有1024大小，所以会造成溢出漏洞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dlink-DIR815溢出漏洞复现">
+<meta property="og:url" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="luckyc&#39;s blog">
-<meta property="og:description" content="Simple sharing">
+<meta property="og:description" content="DIR-815溢出漏洞复现漏洞利用分析据漏洞信息漏洞是出现在hedwig.cgi中，hedwig.cgi是指向.&#x2F;htdocs&#x2F;cgibin的符号链接漏洞点主要就是下图中的spriintf没有对string大小进行限制，而v27只有1024大小，所以会造成溢出漏洞">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703760589-0984a0ca-36d6-4233-8b1b-fbf34e65027e.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703791481-76571407-7a4b-464a-a912-aa12f4e5255b.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703838539-0a69aa1a-7340-4615-99ce-e8606f65765d.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787188086-9603b1c3-c2e4-4a3f-a2a7-a92a4edf842d.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787247094-79a0adb5-7166-4bab-972c-68b3d7d7426f.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787454205-7aaa53b6-a73a-4eaa-be91-51b97efa30de.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787466689-d524e587-56ae-48f3-a70d-25e30b4166ed.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787557374-ea9770fc-20a5-409f-89c5-d9a9e7818883.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787676132-88d2c6b6-3de6-4fa5-9eb1-51f2335d13a1.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787747539-00a570bf-59ac-4bd5-a0e0-7616cdbcfc90.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787857485-74926f31-6e2c-4cf4-9e31-19602dc07114.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788354356-6ae5975d-79c1-4764-8c9e-f9cee7991fba.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788363527-0b215e7c-f9e6-4fa8-a137-0a687085344d.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788667150-6aa44c7e-7a7b-4793-99fe-77603fd66335.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708789900122-8a07bbd0-202d-47b7-9ba5-5976a6f5bbac.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708789831556-f31b6823-4815-453d-a003-6be1996d64a5.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708790432301-28ed5b77-95c4-4903-b1ea-48a4290edf12.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708935227108-c713eaba-ec6d-43fa-9b41-8986af9d3fbd.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708935459159-03781259-e1c3-40fc-be70-e009bc7d352c.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708949647470-806bc0bd-3e56-4a9b-8dd9-deef83e3c897.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708794777667-060efae2-f23c-43d3-a5ed-2dc9a9402f78.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708794597506-a00aff4d-9831-479f-982a-387f48b7482b.png">
+<meta property="article:published_time" content="2024-03-15T10:07:03.000Z">
+<meta property="article:modified_time" content="2024-03-15T10:26:35.922Z">
 <meta property="article:author" content="luckyc">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703760589-0984a0ca-36d6-4233-8b1b-fbf34e65027e.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -167,150 +192,219 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Dlink-DIR815溢出漏洞复现" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-03-15T10:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-emma学习以及复现</a>
   
+    <h1 class="article-title" itemprop="name">
+      Dlink-DIR815溢出漏洞复现
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-03-15T10:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR645溢出漏洞复现</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 <a href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
         <time datetime="2024-03-15T10:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR815溢出漏洞复现</a>
   
-    </h1>
-  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">986字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
 
 
-        <div class="article-info info-on-right">
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="DIR-815溢出漏洞复现"><a href="#DIR-815溢出漏洞复现" class="headerlink" title="DIR-815溢出漏洞复现"></a>DIR-815溢出漏洞复现</h3><h6 id="漏洞利用分析"><a href="#漏洞利用分析" class="headerlink" title="漏洞利用分析"></a>漏洞利用分析</h6><p>据漏洞信息漏洞是出现在hedwig.cgi中，hedwig.cgi是指向.&#x2F;htdocs&#x2F;cgibin的符号链接<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703760589-0984a0ca-36d6-4233-8b1b-fbf34e65027e.png"><br>漏洞点主要就是下图中的spriintf没有对string大小进行限制，而v27只有1024大小，所以会造成溢出漏洞</p>
+<span id="more"></span>
+
+<p><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703791481-76571407-7a4b-464a-a912-aa12f4e5255b.png"><br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703838539-0a69aa1a-7340-4615-99ce-e8606f65765d.png"><br>这里主要分析一下sess_get_uid函数干了什么</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">&#123;</span><br><span class="line">    cookie_1_idx0 = *cookie_1;</span><br><span class="line">    <span class="keyword">if</span> ( !*cookie_1 )</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> ( v6 == <span class="number">1</span> )</span><br><span class="line">        <span class="keyword">goto</span> LABEL_11;</span><br><span class="line">    <span class="keyword">if</span> ( v6 &lt; <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ( cookie_1_idx0 == <span class="string">&#x27; &#x27;</span> )</span><br><span class="line">            <span class="keyword">goto</span> LABEL_18;</span><br><span class="line">        sobj_free(v2);                            <span class="comment">// sobj[5]!= 0 才会free 但前面默认是0</span></span><br><span class="line">        sobj_free(v4);</span><br><span class="line">        LABEL_11:</span><br><span class="line">        <span class="keyword">if</span> ( cookie_1_idx0 == <span class="string">&#x27;;&#x27;</span> )</span><br><span class="line">        &#123;</span><br><span class="line">            v6 = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            v6 = <span class="number">2</span>;                                 <span class="comment">// cookie存在且 不为空格和分号</span></span><br><span class="line">            <span class="keyword">if</span> ( cookie_1_idx0 != <span class="string">&#x27;=&#x27;</span> )             <span class="comment">// 遇到等号时 v6=2</span></span><br><span class="line">            &#123;</span><br><span class="line">                sobj_add_char(v2, cookie_1_idx0);     <span class="comment">// 遇到=前 存入到v2中</span></span><br><span class="line">                v6 = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">goto</span> LABEL_18;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( v6 == <span class="number">2</span> )                              <span class="comment">// 遇到等号</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ( cookie_1_idx0 == <span class="string">&#x27;;&#x27;</span> )               <span class="comment">// 直到 分号</span></span><br><span class="line">        &#123;</span><br><span class="line">            v6 = <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">goto</span> LABEL_18;</span><br><span class="line">        &#125;</span><br><span class="line">        sobj_add_char(v4, *cookie_1++);           <span class="comment">// 遇到=后 存入到v4 直到遇到 ；</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        v6 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ( !sobj_strcmp(v2, <span class="string">&quot;uid&quot;</span>) )            <span class="comment">// =前为 uid 结束循环</span></span><br><span class="line">            <span class="keyword">goto</span> LABEL_21;</span><br><span class="line">        LABEL_18:</span><br><span class="line">        ++cookie_1;                               <span class="comment">// 继续判断下一位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;                                             <span class="comment">// while循环部分</span></span><br><span class="line"><span class="keyword">if</span> ( !sobj_strcmp(v2, <span class="string">&quot;uid&quot;</span>) )</span><br><span class="line">&#123;</span><br><span class="line">    LABEL_21:</span><br><span class="line">    <span class="built_in">string</span> = sobj_get_string(v4);</span><br><span class="line">    <span class="keyword">goto</span> LABEL_22;</span><br><span class="line">&#125;</span><br><span class="line">LABEL_27:</span><br><span class="line"><span class="built_in">string</span> = getenv(<span class="string">&quot;REMOTE_ADDR&quot;</span>);               <span class="comment">// 客户端ip</span></span><br><span class="line">LABEL_22:</span><br><span class="line">sobj_add_string(a1, <span class="built_in">string</span>);</span><br><span class="line"><span class="keyword">if</span> ( v2 )</span><br><span class="line">    sobj_del(v2);</span><br><span class="line"><span class="keyword">if</span> ( v4 )</span><br><span class="line">    sobj_del(v4);</span><br></pre></td></tr></table></figure>
+<p>首先会进入这里，遇到 &#x3D; 前会把cookie的内容存到v2中，v6&#x3D;1<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787188086-9603b1c3-c2e4-4a3f-a2a7-a92a4edf842d.png"><br>然后继续下一位判断<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787247094-79a0adb5-7166-4bab-972c-68b3d7d7426f.png"><br>遇到 &#x3D; 后v6&#x3D;2 进入到<img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787454205-7aaa53b6-a73a-4eaa-be91-51b97efa30de.png"><br>直到 ； 会结束，在遇到；前将cookie存到v4中，直到遇到； v6&#x3D;3<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787466689-d524e587-56ae-48f3-a70d-25e30b4166ed.png"><br>然后v6&#x3D;0，会去判断v2 (等号前部分) 是不是uid，如果不是则继续判断剩下cookie部分；<br>是uid则获取地址给到string，再传给a1（sess_get_uid的参数）<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787557374-ea9770fc-20a5-409f-89c5-d9a9e7818883.png"><br>sobj_get_strin<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787676132-88d2c6b6-3de6-4fa5-9eb1-51f2335d13a1.png"><br>sobj_add_string<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787747539-00a570bf-59ac-4bd5-a0e0-7616cdbcfc90.png"><br>结束sess_get_uid（v4），可以发现没有对v4或string进行检测，也就造成了sprintf的溢出<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708787857485-74926f31-6e2c-4cf4-9e31-19602dc07114.png"></p>
+<h6 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h6><p>为了程序能够成功执行，还需要设定几个环境变量，这里暂时只考虑执行到sess_get_uid函数前的环境变量<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788354356-6ae5975d-79c1-4764-8c9e-f9cee7991fba.png"><br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788363527-0b215e7c-f9e6-4fa8-a137-0a687085344d.png"><br>这里也是根据网上其他师傅写的sh脚本，（sudo -E 就是执行时加环境变量）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">test</span>=$(python -c <span class="string">&quot;print &#x27;uid=&#x27;+open(&#x27;payload&#x27;,&#x27;r&#x27;).read()&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LEN=$(<span class="built_in">echo</span> -n <span class="string">&quot;<span class="variable">$test</span>&quot;</span> | <span class="built_in">wc</span> -c)  </span><br><span class="line">PORT=<span class="string">&quot;1234&quot;</span></span><br><span class="line"><span class="built_in">cp</span> $(<span class="built_in">which</span> qemu-mipsel-static) ./qemu</span><br><span class="line"><span class="built_in">chmod</span> +x ./qemu</span><br><span class="line">sudo <span class="built_in">chroot</span> . ./qemu -E CONTENT_LENGTH=<span class="variable">$LEN</span>  -E REQUEST_METHOD=<span class="string">&quot;POST&quot;</span> -E HTTP_COOKIE=<span class="variable">$test</span> -E REQUEST_URL=<span class="string">&quot;/hedwig.cgi&quot;</span> -E REMOTE_ADDR=<span class="string">&quot;127.0.0.1&quot;</span> -g <span class="variable">$PORT</span> /htdocs/web/hedwig.cgi       </span><br><span class="line"><span class="built_in">rm</span> -f ./qemu     </span><br><span class="line"></span><br><span class="line"><span class="comment">#b *0x00407D08	获取cookie</span></span><br><span class="line"><span class="comment">#b *0x00409638	sprintf</span></span><br></pre></td></tr></table></figure>
+
+<p>执行后就可以发现成功溢出了，然后我们就需要确定偏移构造payload<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708788667150-6aa44c7e-7a7b-4793-99fe-77603fd66335.png"><br>通过测试的payload就可以测出溢出的偏移，并且可以发现我们不止可控制ra，还有s0~s7<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708789900122-8a07bbd0-202d-47b7-9ba5-5976a6f5bbac.png"><br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708789831556-f31b6823-4815-453d-a003-6be1996d64a5.png"></p>
+<h6 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload"></a>构造payload</h6><p>不知道为什么我vmmap看不到libc的基地址，可能没有载入qemu的内存映射？<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708790432301-28ed5b77-95c4-4903-b1ea-48a4290edf12.png"><br>将libuClibc文件拖入ida找到sprintf地址为0x0002DA70<br>在程序运行中找到sprintf地址为0x7f765a70，使用libc基地址为0x7f765a70-0x0002DA70&#x3D;0x7f738000<br>然后就是去找可利用的gadget，可以使用ROPgadget，不过用起来体验不是很好，可以将找到的内容放入到文本中再去找相关寄存器<br>可以使用ida的mipsrop插件  mipsrop.find(“”) 来找需要的gadget<br>第一个gadget：为了执行system(‘&#x2F;bin&#x2F;sh’)，需要控制第一个参数即a0，因为mips的分支延迟效应，所以跳转后的第一条指令也是会被执行的，sp+0x14c-0x13c和s0是我们可控的，利用这个gadget我们便可以控制a0，且继续控制程序流<img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708935227108-c713eaba-ec6d-43fa-9b41-8986af9d3fbd.png"><br>第二个gadget：因为sprintf会被\x00截断，而system地址为libuc_base + 0x53200，所以这里我们输入system_adr-1，利用该gadget去+1，且s5也是可控<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708935459159-03781259-e1c3-40fc-be70-e009bc7d352c.png"><br>即ra&#x3D;gadget2 —&gt; 使s0 (system-1) +1 并ja到 gadget1 —&gt; 使a0&#x3D;&#x2F;bin&#x2F;sh，并ja到system<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708949647470-806bc0bd-3e56-4a9b-8dd9-deef83e3c897.png"><br>在执行时会报如下错，手动添加文件即可<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708794777667-060efae2-f23c-43d3-a5ed-2dc9a9402f78.png"><br>可以看到我们成功执行到了system(&#x2F;bin&#x2F;sh)，但是因为我们是qemu的用户模式模拟的，在system中的fork()函数会失败<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708794597506-a00aff4d-9831-479f-982a-387f48b7482b.png"><br>quem系统模式<br><a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-272318.htm#msg_header_h2_4">https://bbs.kanxue.com/thread-272318.htm#msg_header_h2_4</a></p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          luckyc
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://1uckyc.github.io/2024/03/15/Dlink-DIR815溢出漏洞复现/" title="Dlink-DIR815溢出漏洞复现" target="_blank">https://1uckyc.github.io/2024/03/15/Dlink-DIR815溢出漏洞复现/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://1uckyc.github.io/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-03-15T10:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Dlink-DIR645溢出漏洞复现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cve-2018-17066复现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/" target="_blank">cve-2018-17066复现</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DIR-815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">DIR-815溢出漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">漏洞利用分析</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">漏洞测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9E%84%E9%80%A0payload"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">构造payload</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        
+    </div>
+</aside>
 
-    
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -339,8 +433,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

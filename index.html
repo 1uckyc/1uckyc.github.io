@@ -174,7 +174,7 @@
             
 
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-house-of-emma学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -182,7 +182,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2024/03/15/test/" target="_blank">DIR-816</a>
+	  <a class="article-title" href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-emma学习以及复现</a>
   
     </h1>
   
@@ -190,8 +190,8 @@
 
   
   
-<a href="/2024/03/15/test/" class="archive-article-date">
-        <time datetime="2024-03-15T01:54:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+<a href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-03-15T10:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
 </a>
 
   
@@ -203,14 +203,9 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>下载固件、binwalk提取</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -Me xxx</span><br></pre></td></tr></table></figure>
-<p>一般web根目录可以用该命令找出</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name &#x27;&#x27;*index*&#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>漏洞编号：CVE-2018-17066</p>
+    <h3 id="house-of-emma"><a href="#house-of-emma" class="headerlink" title="house of emma"></a>house of emma</h3><p>参考：   <a target="_blank" rel="noopener" href="https://lololo-pwn.github.io/2022/03/15/House-of-Emma/">桥下少年</a><br>emma也是利用house of kiwi的触发assert机制，<br>house of kiwi是去走的<code>fflush--&gt;__sync__</code><br>house of emma 是走的 <code>fxprintf --&gt; __locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code><br>通过修改<code>_IO_file_jumps</code>为<code>_IO_cookie_jumps+offset</code>，使得最后+偏移为<code>_IO_cookie_write</code><br>然后在<code>_IO_cookie_write</code>中会直接调用指针，设置好偏移就可以去控制执行流</p>
     
-    <a class="article-more-a" href="/2024/03/15/test/#more">more >></a>
+    <a class="article-more-a" href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
     
     
 
@@ -226,7 +221,240 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/test/">展开全文 >></a>
+      <a class="article-more-a" href="/2024/03/15/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Dlink-DIR645溢出漏洞复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR645溢出漏洞复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-03-15T10:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="DIR-645溢出漏洞复现"><a href="#DIR-645溢出漏洞复现" class="headerlink" title="DIR-645溢出漏洞复现"></a>DIR-645溢出漏洞复现</h3><p>和DIR-815溢出漏洞非常相似，相当于再巩固一遍吧。</p>
+<h6 id="漏洞利用分析"><a href="#漏洞利用分析" class="headerlink" title="漏洞利用分析"></a>漏洞利用分析</h6><p>根据漏洞信息、漏洞出现在authentication.cgi，也是指向.&#x2F;htdocs&#x2F;cgibin的符号链接<br><img src="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1710173598827-7ccf893f-3aff-4421-99b5-012452f62649.png"></p>
+    
+    <a class="article-more-a" href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/15/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Dlink-DIR815溢出漏洞复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR815溢出漏洞复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-03-15T10:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="DIR-815溢出漏洞复现"><a href="#DIR-815溢出漏洞复现" class="headerlink" title="DIR-815溢出漏洞复现"></a>DIR-815溢出漏洞复现</h3><h6 id="漏洞利用分析"><a href="#漏洞利用分析" class="headerlink" title="漏洞利用分析"></a>漏洞利用分析</h6><p>据漏洞信息漏洞是出现在hedwig.cgi中，hedwig.cgi是指向.&#x2F;htdocs&#x2F;cgibin的符号链接<br><img src="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1708703760589-0984a0ca-36d6-4233-8b1b-fbf34e65027e.png"><br>漏洞点主要就是下图中的spriintf没有对string大小进行限制，而v27只有1024大小，所以会造成溢出漏洞</p>
+    
+    <a class="article-more-a" href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/15/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-cve-2018-17066复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/" target="_blank">cve-2018-17066复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-03-15T10:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>漏洞编号：CVE-2018-17066<br>DIR-816 漏洞在&#x2F;bin&#x2F;goahead程序中</p>
+<p><img src="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/1699874649517-3352471b-cf5e-4b2a-b9e8-c2ce12a15129.png"></p>
+    
+    <a class="article-more-a" href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/15/cve-2018-17066%E5%A4%8D%E7%8E%B0/">展开全文 >></a>
     </p>
     
 
