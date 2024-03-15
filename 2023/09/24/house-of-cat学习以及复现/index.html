@@ -6,19 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://1uckyc.github.io">
-  <title>Archives: 2024/2 | 1uckyc&#39;s blog</title>
+  <title>house-of-cat学习以及复现 | 1uckyc&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Simple sharing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1uckyc&#39;s blog">
-<meta property="og:url" content="https://1uckyc.github.io/archives/2024/02/index.html">
+  <meta name="description" content="house of cat只要可以largebin（任意地址写入可控地址）就可以实现，要求很低同house of emma，前面的利用链仍然是__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn，然后利用去调用_IO_default_xsputn时修改vtable在合理范围的偏移去">
+<meta property="og:type" content="article">
+<meta property="og:title" content="house-of-cat学习以及复现">
+<meta property="og:url" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="1uckyc&#39;s blog">
-<meta property="og:description" content="Simple sharing">
+<meta property="og:description" content="house of cat只要可以largebin（任意地址写入可控地址）就可以实现，要求很低同house of emma，前面的利用链仍然是__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn，然后利用去调用_IO_default_xsputn时修改vtable在合理范围的偏移去">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695469703377-59d7f4ad-b96b-47cd-b3e8-08e5ea30df0c.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471465454-d1e0e80a-3363-4a0d-9891-db6b1afb411e.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471474200-381c19a9-6d25-4631-bcae-e6570eff0b52.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471547084-cbeb7269-4c60-402f-8037-8913e653c93e.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471592164-eadf2c91-c790-4c8a-b2f2-a2a465c37a9f.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472575109-23d5b336-9a07-49f0-b7da-936f9b2cc92c.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472753347-b36ddcfa-9371-4c7d-8ad8-3ecc97ff45ff.png">
+<meta property="og:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472789314-a1ff6182-692f-4d6c-841e-60fde3f9f42e.png">
+<meta property="article:published_time" content="2023-09-24T15:11:48.000Z">
+<meta property="article:modified_time" content="2024-03-15T12:09:37.642Z">
 <meta property="article:author" content="1uckyc">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -167,54 +179,227 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-house-of-cat学习以及复现" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-02-25T12:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-25</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR815溢出漏洞复现</a>
   
+    <h1 class="article-title" itemprop="name">
+      house-of-cat学习以及复现
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2023-09-24T15:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
+</a>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">993字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
+
   
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="house-of-cat"><a href="#house-of-cat" class="headerlink" title="house of cat"></a>house of cat</h3><p>只要可以largebin（任意地址写入可控地址）就可以实现，要求很低<br>同house of emma，前面的利用链仍然是<code>__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code>，然后利用去调用<code>_IO_default_xsputn</code>时修改vtable在合理范围的偏移去执行我们想要的内容，house of cat利用的是<code>_IO_wfile_seekoff</code>，当然也可以通过FSOP来完成这一步<br><code>_IO_wfile_seekoff ----&gt; _IO_switch_to_wget_mode：</code><br><code>rdi = stderr ---&gt; rax1 = stderr + 0xa0 ----&gt; rax2 = rax1 + 0xe0 ----&gt; call rax2 + 0x18</code><br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png" alt="img"><br>因为rdi是可控的，所以程序流可控且rdx可控，就可以去执行setcontext+orw了</p>
+<h3 id="强网杯2022-house-of-cat"><a href="#强网杯2022-house-of-cat" class="headerlink" title="强网杯2022|house of cat"></a>强网杯2022|house of cat</h3><h4 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> __fastcall __noreturn <span class="title function_">main</span><span class="params">(__int64 a1, <span class="type">char</span> **a2, <span class="type">char</span> **a3)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> s[<span class="number">72</span>]; <span class="comment">// [rsp+0h] [rbp-50h] BYREF</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 v4; <span class="comment">// [rsp+48h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v4 = __readfsqword(<span class="number">0x28</span>u);</span><br><span class="line">  sub_1583();</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_155E();</span><br><span class="line">    c_write(<span class="string">&quot;mew mew mew~~~~~~\n&quot;</span>);</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="number">0x3C</span>uLL);</span><br><span class="line">    read(<span class="number">0</span>, s, <span class="number">0x3B</span>uLL);</span><br><span class="line">    sub_19D6(s);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要绕过的判断：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall <span class="title function_">sub_1A50</span><span class="params">(<span class="type">char</span> *a1, __int64 a2)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *s; <span class="comment">// [rsp+18h] [rbp-28h]</span></span><br><span class="line">  <span class="type">char</span> *v4; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">char</span> *v5; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">char</span> *v6; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *s2; <span class="comment">// [rsp+28h] [rbp-18h]</span></span><br><span class="line">  <span class="type">char</span> *v8; <span class="comment">// [rsp+30h] [rbp-10h]</span></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *s1; <span class="comment">// [rsp+38h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v4 = <span class="built_in">strstr</span>(a1, <span class="string">&quot;QWB&quot;</span>);                       <span class="comment">// 如果没找到返回null</span></span><br><span class="line">  <span class="keyword">if</span> ( !v4 )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *v4 = <span class="number">0</span>;</span><br><span class="line">  v4[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  v4[<span class="number">2</span>] = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  v5 = v4 + <span class="number">3</span>;</span><br><span class="line">  s2 = strtok(a1, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>(<span class="string">&quot;LOGIN&quot;</span>, s2) )</span><br><span class="line">  &#123;</span><br><span class="line">    *(a2 + <span class="number">8</span>) = <span class="number">1</span>;                              <span class="comment">// 登录状态</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;DOG&quot;</span>, s2) )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;CAT&quot;</span>, s2) )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;MONKEY&quot;</span>, s2) )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;FISH&quot;</span>, s2) )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;PIG&quot;</span>, s2) )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;WOLF&quot;</span>, s2) )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;DUCK&quot;</span>, s2) )</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;GOLF&quot;</span>, s2) )</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;TIGER&quot;</span>, s2) )</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">                  *(a2 + <span class="number">8</span>) = <span class="number">10</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                  *(a2 + <span class="number">8</span>) = <span class="number">9</span>;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">else</span></span><br><span class="line">              &#123;</span><br><span class="line">                *(a2 + <span class="number">8</span>) = <span class="number">8</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">              *(a2 + <span class="number">8</span>) = <span class="number">7</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          &#123;</span><br><span class="line">            *(a2 + <span class="number">8</span>) = <span class="number">6</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          *(a2 + <span class="number">8</span>) = <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        *(a2 + <span class="number">8</span>) = <span class="number">4</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      *(a2 + <span class="number">8</span>) = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    *(a2 + <span class="number">8</span>) = <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  v8 = strtok(<span class="number">0LL</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v8 != <span class="built_in">strchr</span>(v8, <span class="string">&#x27;|&#x27;</span>) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *a2 = v8;</span><br><span class="line">  s1 = strtok(<span class="number">0LL</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strcmp</span>(s1, <span class="string">&quot;r00t&quot;</span>) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  s = v5 + <span class="number">5</span>;</span><br><span class="line">  v6 = <span class="built_in">strstr</span>(v5, <span class="string">&quot;QWXF&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( !v6 )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *v6 = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">3</span>] = <span class="number">32</span>;</span><br><span class="line">  *(a2 + <span class="number">16</span>) = s;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1LL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">ssize_t</span> __fastcall <span class="title function_">sub_1DF3</span><span class="params">(__int64 a1)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">ssize_t</span> result; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> v2; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">char</span> *v3; <span class="comment">// [rsp+18h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( *(a1 + <span class="number">8</span>) == <span class="number">1</span> &amp;&amp; !<span class="built_in">strcmp</span>(*(a1 + <span class="number">16</span>), <span class="string">&quot;admin&quot;</span>) )</span><br><span class="line">    admin_use[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  result = *(a1 + <span class="number">8</span>);                           <span class="comment">// CAT</span></span><br><span class="line">  <span class="keyword">if</span> ( result == <span class="number">3</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    result = strtok(*(a1 + <span class="number">16</span>), <span class="string">&quot;$&quot;</span>);</span><br><span class="line">    v3 = result;</span><br><span class="line">    <span class="keyword">if</span> ( result )</span><br><span class="line">    &#123;</span><br><span class="line">      result = dword_4014;</span><br><span class="line">      <span class="keyword">if</span> ( *v3 == dword_4014 )</span><br><span class="line">      &#123;</span><br><span class="line">        result = admin_use[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span> ( admin_use[<span class="number">0</span>] )</span><br><span class="line">        &#123;</span><br><span class="line">          menu();</span><br><span class="line">          v2 = c_read_0x17();</span><br><span class="line">          <span class="keyword">if</span> ( v2 == <span class="number">4</span> )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">return</span> edit();                      <span class="comment">// 固定写0x30</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> ( v2 &lt;= <span class="number">4</span> )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">switch</span> ( v2 )</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3u</span>:</span><br><span class="line">                  <span class="keyword">return</span> show();</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1u</span>:</span><br><span class="line">                  <span class="keyword">return</span> add();</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2u</span>:</span><br><span class="line">                  <span class="keyword">return</span> delete();              <span class="comment">// uaf</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> c_write(<span class="string">&quot;error!\n&quot;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>逆了挺久也没搞清楚，是我太菜了 orz<br>后面就是看了网上师傅的逆向结果<img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695469703377-59d7f4ad-b96b-47cd-b3e8-08e5ea30df0c.png" alt="img"></p>
+<p>add：用的calloc 限制了size大小 0x418~0x46F</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ssize_t</span> <span class="title function_">add</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> __int64 v1; <span class="comment">// [rsp+0h] [rbp-10h]</span></span><br><span class="line">  <span class="type">size_t</span> size; <span class="comment">// [rsp+8h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  c_write(<span class="string">&quot;plz input your cat idx:\n&quot;</span>);</span><br><span class="line">  v1 = c_read_0x17();</span><br><span class="line">  <span class="keyword">if</span> ( v1 &gt; <span class="number">0xF</span> || *(&amp;chunk_ptr + v1) )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;invalid!\n&quot;</span>);</span><br><span class="line">  c_write(<span class="string">&quot;plz input your cat size:\n&quot;</span>);</span><br><span class="line">  size = c_read_0x17();</span><br><span class="line">  <span class="keyword">if</span> ( size &lt;= <span class="number">0x417</span> || size &gt; <span class="number">0x46F</span> )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;invalid size!\n&quot;</span>);</span><br><span class="line">  *(&amp;chunk_ptr + v1) = <span class="built_in">calloc</span>(<span class="number">1uLL</span>, size);</span><br><span class="line">  <span class="keyword">if</span> ( !*(&amp;chunk_ptr + v1) )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;error!\n&quot;</span>);</span><br><span class="line">  chunk_size[v1] = size;</span><br><span class="line">  c_write(<span class="string">&quot;plz input your content:\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> read(<span class="number">0</span>, *(&amp;chunk_ptr + v1), chunk_size[v1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>delete：存在uaf<br>show：正常<br>edit：固定写入0x30，限制了2次次数（开始自己做的时候就没注意这里qwq）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ssize_t</span> <span class="title function_">sub_1916</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> __int64 v1; <span class="comment">// [rsp+8h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( dword_4010 &lt;= <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;nonono!!!!\n&quot;</span>);</span><br><span class="line">  --dword_4010;</span><br><span class="line">  c_write(<span class="string">&quot;plz input your cat idx:\n&quot;</span>);</span><br><span class="line">  v1 = c_read_0x17();</span><br><span class="line">  <span class="keyword">if</span> ( v1 &gt; <span class="number">0xF</span> || !*(&amp;chunk_ptr + v1) )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;invalid!\n&quot;</span>);</span><br><span class="line">  c_write(<span class="string">&quot;plz input your content:\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> read(<span class="number">0</span>, *(&amp;chunk_ptr + v1), <span class="number">0x30</span>uLL);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路及过程"><a href="#思路及过程" class="headerlink" title="思路及过程"></a>思路及过程</h4><p>因为和house of emma挺相似的，思路还是差不多的，不过house of cat不用去修改 __pointer_chk_guard<br>1、先泄露地址<br>2、然后利用 largebin attack去修改stderr<br>3、然后利用 largebin attack去修改top_chunk<br>4、触发assert<br>伪造的vtable<br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471465454-d1e0e80a-3363-4a0d-9891-db6b1afb411e.png" alt="img"></p>
+<p>偏移跳转到_IO_wfile_seekoff<br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471474200-381c19a9-6d25-4631-bcae-e6570eff0b52.png" alt="img"></p>
+<p>之后会跳转到_IO_switch_to_wget_mode，到这里就是我们要利用的地方了</p>
+<p><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471547084-cbeb7269-4c60-402f-8037-8913e653c93e.png" alt="img"><br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695471592164-eadf2c91-c790-4c8a-b2f2-a2a465c37a9f.png" alt="img"></p>
+<p><code>rdi = stderr ---&gt; rax1 = stderr + 0xa0 ----&gt; rax2 = rax1 + 0xe0 ----&gt; call rax2 + 0x18</code><br>同时rdx &#x3D; rax1 + 0x20<br>所以可以伪造IO：<br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472575109-23d5b336-9a07-49f0-b7da-936f9b2cc92c.png" alt="img"></p>
+<p>然后就会进入setcontext+61去执行rdx+0xe0–&gt;orw<br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472753347-b36ddcfa-9371-4c7d-8ad8-3ecc97ff45ff.png" alt="img"><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695472789314-a1ff6182-692f-4d6c-841e-60fde3f9f42e.png" alt="img"></p>
 
     
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          1uckyc
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://1uckyc.github.io/2023/09/24/house-of-cat学习以及复现/" title="house-of-cat学习以及复现" target="_blank">https://1uckyc.github.io/2023/09/24/house-of-cat学习以及复现/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://1uckyc.github.io/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cve-2018-17066复现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">house-of-emma学习以及复现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#house-of-cat"><span class="toc-number">1.</span> <span class="toc-text">house of cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF2022-house-of-cat"><span class="toc-number">2.</span> <span class="toc-text">强网杯2022|house of cat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IDA"><span class="toc-number">2.1.</span> <span class="toc-text">IDA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">思路及过程</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -243,8 +428,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

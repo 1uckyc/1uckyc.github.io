@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://1uckyc.github.io">
-  <title>luckyc&#39;s blog</title>
+  <title>1uckyc&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -16,12 +16,12 @@
   
   <meta name="description" content="Simple sharing">
 <meta property="og:type" content="website">
-<meta property="og:title" content="luckyc&#39;s blog">
+<meta property="og:title" content="1uckyc&#39;s blog">
 <meta property="og:url" content="https://1uckyc.github.io/index.html">
-<meta property="og:site_name" content="luckyc&#39;s blog">
+<meta property="og:site_name" content="1uckyc&#39;s blog">
 <meta property="og:description" content="Simple sharing">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="luckyc">
+<meta property="article:author" content="1uckyc">
 <meta name="twitter:card" content="summary">
   
   
@@ -64,7 +64,7 @@
 			<img src="/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-			<h1 class="header-author"><a href="/">luckyc</a></h1>
+			<h1 class="header-author"><a href="/">1uckyc</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">Welcome to my blog </p>
@@ -124,7 +124,7 @@
 				</a>
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">luckyc</h1>
+			  <h1 class="header-author js-header-author">1uckyc</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Welcome to my blog <i class="icon icon-quo-right"></i></p>
@@ -172,6 +172,86 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+  
+    <article id="post-house-of-wiki学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-wiki学习以及复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-09-03T15:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="house-of-kiwi"><a href="#house-of-kiwi" class="headerlink" title="house of kiwi"></a>house of kiwi</h3><h4 id="1、setcontext-61的gadget"><a href="#1、setcontext-61的gadget" class="headerlink" title="1、setcontext+61的gadget"></a>1、setcontext+61的gadget</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">68</span>&gt;:    mov    rbx,QWORD PTR [rdx+<span class="number">0x80</span>]</span><br><span class="line">&lt;setcontext+<span class="number">75</span>&gt;:    mov    rbp,QWORD PTR [rdx+<span class="number">0x78</span>]</span><br><span class="line">&lt;setcontext+<span class="number">79</span>&gt;:    mov    r12,QWORD PTR [rdx+<span class="number">0x48</span>]</span><br><span class="line">&lt;setcontext+<span class="number">83</span>&gt;:    mov    r13,QWORD PTR [rdx+<span class="number">0x50</span>]</span><br><span class="line">&lt;setcontext+<span class="number">87</span>&gt;:    mov    r14,QWORD PTR [rdx+<span class="number">0x58</span>]</span><br><span class="line">&lt;setcontext+<span class="number">91</span>&gt;:    mov    r15,QWORD PTR [rdx+<span class="number">0x60</span>]</span><br><span class="line">&lt;setcontext+<span class="number">95</span>&gt;:    test   DWORD PTR fs:<span class="number">0x48</span>,<span class="number">0x2</span></span><br><span class="line">&lt;setcontext+<span class="number">107</span>&gt;:    je     <span class="number">0x7ffff7e31156</span> &lt;setcontext+<span class="number">294</span>&gt;</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br><span class="line">&lt;setcontext+<span class="number">302</span>&gt;:    mov    rsi,QWORD PTR [rdx+<span class="number">0x70</span>]</span><br><span class="line">&lt;setcontext+<span class="number">306</span>&gt;:    mov    rdi,QWORD PTR [rdx+<span class="number">0x68</span>]</span><br><span class="line">&lt;setcontext+<span class="number">310</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0x98</span>]</span><br><span class="line">&lt;setcontext+<span class="number">317</span>&gt;:    mov    r8,QWORD PTR [rdx+<span class="number">0x28</span>]</span><br><span class="line">&lt;setcontext+<span class="number">321</span>&gt;:    mov    r9,QWORD PTR [rdx+<span class="number">0x30</span>]</span><br><span class="line">&lt;setcontext+<span class="number">325</span>&gt;:    mov    rdx,QWORD PTR [rdx+<span class="number">0x88</span>]</span><br><span class="line">&lt;setcontext+<span class="number">332</span>&gt;:    xor    eax,eax</span><br><span class="line">&lt;setcontext+<span class="number">334</span>&gt;:    ret</span><br></pre></td></tr></table></figure>
+
+<p>主要关注的就是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;setcontext+<span class="number">61</span>&gt;:    mov    rsp,QWORD PTR [rdx+<span class="number">0xa0</span>]</span><br><span class="line">&lt;setcontext+<span class="number">294</span>&gt;:    mov    rcx,QWORD PTR [rdx+<span class="number">0xa8</span>]</span><br><span class="line">&lt;setcontext+<span class="number">301</span>&gt;:    push   rcx</span><br></pre></td></tr></table></figure>
+
+<p>布置好rdx+0xa0 以及 rdx+0xa8 也就控制了rsp，后续ret就可以控制程序流了</p>
+<h4 id="2、IO"><a href="#2、IO" class="headerlink" title="2、IO"></a>2、IO</h4><p>也是这周刚好参加国资社畜师傅的课，对IO了解的更详细些，这里是利用<code>_malloc_assert</code>去调用fflush函数，也就会执行跳表中的<code>__sync</code>指针</p>
+<h4 id="3、house-of-kiwi"><a href="#3、house-of-kiwi" class="headerlink" title="3、house of kiwi"></a>3、house of kiwi</h4><p>因为进入IO的<code>__sync</code>之后会发现rdx固定为_IO_helper_jumps，所以控制<code>_IO_helper_jumps+0xa0、_IO_helper_jumps+0xa8</code>去调用setcontext+61就可以控制程序流<img src="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1694530611129-f5b45f8c-06f9-4a13-8334-f353c3b1060b.png" alt="img"></p>
+    
+    <a class="article-more-a" href="/2024/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
 
   
     <article id="post-Dlink-DIR645溢出漏洞复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -393,6 +473,87 @@
 
 
   
+    <article id="post-house-of-cat学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-cat学习以及复现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2023-09-24T15:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="house-of-cat"><a href="#house-of-cat" class="headerlink" title="house of cat"></a>house of cat</h3><p>只要可以largebin（任意地址写入可控地址）就可以实现，要求很低<br>同house of emma，前面的利用链仍然是<code>__fxprintf --&gt; locked_vfxprinf --&gt; __vfprintf_internal --&gt; _IO_default_xsputn</code>，然后利用去调用<code>_IO_default_xsputn</code>时修改vtable在合理范围的偏移去执行我们想要的内容，house of cat利用的是<code>_IO_wfile_seekoff</code>，当然也可以通过FSOP来完成这一步<br><code>_IO_wfile_seekoff ----&gt; _IO_switch_to_wget_mode：</code><br><code>rdi = stderr ---&gt; rax1 = stderr + 0xa0 ----&gt; rax2 = rax1 + 0xe0 ----&gt; call rax2 + 0x18</code><br><img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695384878576-0c135b74-d7a6-431d-8c3a-01abaf2be949.png" alt="img"><br>因为rdi是可控的，所以程序流可控且rdx可控，就可以去执行setcontext+orw了</p>
+<h3 id="强网杯2022-house-of-cat"><a href="#强网杯2022-house-of-cat" class="headerlink" title="强网杯2022|house of cat"></a>强网杯2022|house of cat</h3><h4 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> __fastcall __noreturn <span class="title function_">main</span><span class="params">(__int64 a1, <span class="type">char</span> **a2, <span class="type">char</span> **a3)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> s[<span class="number">72</span>]; <span class="comment">// [rsp+0h] [rbp-50h] BYREF</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 v4; <span class="comment">// [rsp+48h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v4 = __readfsqword(<span class="number">0x28</span>u);</span><br><span class="line">  sub_1583();</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_155E();</span><br><span class="line">    c_write(<span class="string">&quot;mew mew mew~~~~~~\n&quot;</span>);</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="number">0x3C</span>uLL);</span><br><span class="line">    read(<span class="number">0</span>, s, <span class="number">0x3B</span>uLL);</span><br><span class="line">    sub_19D6(s);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要绕过的判断：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall <span class="title function_">sub_1A50</span><span class="params">(<span class="type">char</span> *a1, __int64 a2)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *s; <span class="comment">// [rsp+18h] [rbp-28h]</span></span><br><span class="line">  <span class="type">char</span> *v4; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">char</span> *v5; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">char</span> *v6; <span class="comment">// [rsp+20h] [rbp-20h]</span></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *s2; <span class="comment">// [rsp+28h] [rbp-18h]</span></span><br><span class="line">  <span class="type">char</span> *v8; <span class="comment">// [rsp+30h] [rbp-10h]</span></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *s1; <span class="comment">// [rsp+38h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v4 = <span class="built_in">strstr</span>(a1, <span class="string">&quot;QWB&quot;</span>);                       <span class="comment">// 如果没找到返回null</span></span><br><span class="line">  <span class="keyword">if</span> ( !v4 )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *v4 = <span class="number">0</span>;</span><br><span class="line">  v4[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  v4[<span class="number">2</span>] = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  v5 = v4 + <span class="number">3</span>;</span><br><span class="line">  s2 = strtok(a1, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>(<span class="string">&quot;LOGIN&quot;</span>, s2) )</span><br><span class="line">  &#123;</span><br><span class="line">    *(a2 + <span class="number">8</span>) = <span class="number">1</span>;                              <span class="comment">// 登录状态</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;DOG&quot;</span>, s2) )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;CAT&quot;</span>, s2) )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;MONKEY&quot;</span>, s2) )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;FISH&quot;</span>, s2) )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;PIG&quot;</span>, s2) )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;WOLF&quot;</span>, s2) )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;DUCK&quot;</span>, s2) )</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;GOLF&quot;</span>, s2) )</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="keyword">if</span> ( *(a2 + <span class="number">8</span>) || <span class="built_in">strcmp</span>(<span class="string">&quot;TIGER&quot;</span>, s2) )</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">                  *(a2 + <span class="number">8</span>) = <span class="number">10</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                  *(a2 + <span class="number">8</span>) = <span class="number">9</span>;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">else</span></span><br><span class="line">              &#123;</span><br><span class="line">                *(a2 + <span class="number">8</span>) = <span class="number">8</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">              *(a2 + <span class="number">8</span>) = <span class="number">7</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          &#123;</span><br><span class="line">            *(a2 + <span class="number">8</span>) = <span class="number">6</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          *(a2 + <span class="number">8</span>) = <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        *(a2 + <span class="number">8</span>) = <span class="number">4</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      *(a2 + <span class="number">8</span>) = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    *(a2 + <span class="number">8</span>) = <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  v8 = strtok(<span class="number">0LL</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v8 != <span class="built_in">strchr</span>(v8, <span class="string">&#x27;|&#x27;</span>) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *a2 = v8;</span><br><span class="line">  s1 = strtok(<span class="number">0LL</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strcmp</span>(s1, <span class="string">&quot;r00t&quot;</span>) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  s = v5 + <span class="number">5</span>;</span><br><span class="line">  v6 = <span class="built_in">strstr</span>(v5, <span class="string">&quot;QWXF&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( !v6 )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0LL</span>;</span><br><span class="line">  *v6 = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">  v6[<span class="number">3</span>] = <span class="number">32</span>;</span><br><span class="line">  *(a2 + <span class="number">16</span>) = s;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1LL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">ssize_t</span> __fastcall <span class="title function_">sub_1DF3</span><span class="params">(__int64 a1)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">ssize_t</span> result; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> v2; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">char</span> *v3; <span class="comment">// [rsp+18h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( *(a1 + <span class="number">8</span>) == <span class="number">1</span> &amp;&amp; !<span class="built_in">strcmp</span>(*(a1 + <span class="number">16</span>), <span class="string">&quot;admin&quot;</span>) )</span><br><span class="line">    admin_use[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  result = *(a1 + <span class="number">8</span>);                           <span class="comment">// CAT</span></span><br><span class="line">  <span class="keyword">if</span> ( result == <span class="number">3</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    result = strtok(*(a1 + <span class="number">16</span>), <span class="string">&quot;$&quot;</span>);</span><br><span class="line">    v3 = result;</span><br><span class="line">    <span class="keyword">if</span> ( result )</span><br><span class="line">    &#123;</span><br><span class="line">      result = dword_4014;</span><br><span class="line">      <span class="keyword">if</span> ( *v3 == dword_4014 )</span><br><span class="line">      &#123;</span><br><span class="line">        result = admin_use[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span> ( admin_use[<span class="number">0</span>] )</span><br><span class="line">        &#123;</span><br><span class="line">          menu();</span><br><span class="line">          v2 = c_read_0x17();</span><br><span class="line">          <span class="keyword">if</span> ( v2 == <span class="number">4</span> )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">return</span> edit();                      <span class="comment">// 固定写0x30</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> ( v2 &lt;= <span class="number">4</span> )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">switch</span> ( v2 )</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3u</span>:</span><br><span class="line">                  <span class="keyword">return</span> show();</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1u</span>:</span><br><span class="line">                  <span class="keyword">return</span> add();</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2u</span>:</span><br><span class="line">                  <span class="keyword">return</span> delete();              <span class="comment">// uaf</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> c_write(<span class="string">&quot;error!\n&quot;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>逆了挺久也没搞清楚，是我太菜了 orz<br>后面就是看了网上师傅的逆向结果<img src="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/1695469703377-59d7f4ad-b96b-47cd-b3e8-08e5ea30df0c.png" alt="img"></p>
+<p>add：用的calloc 限制了size大小 0x418~0x46F</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ssize_t</span> <span class="title function_">add</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> __int64 v1; <span class="comment">// [rsp+0h] [rbp-10h]</span></span><br><span class="line">  <span class="type">size_t</span> size; <span class="comment">// [rsp+8h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  c_write(<span class="string">&quot;plz input your cat idx:\n&quot;</span>);</span><br><span class="line">  v1 = c_read_0x17();</span><br><span class="line">  <span class="keyword">if</span> ( v1 &gt; <span class="number">0xF</span> || *(&amp;chunk_ptr + v1) )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;invalid!\n&quot;</span>);</span><br><span class="line">  c_write(<span class="string">&quot;plz input your cat size:\n&quot;</span>);</span><br><span class="line">  size = c_read_0x17();</span><br><span class="line">  <span class="keyword">if</span> ( size &lt;= <span class="number">0x417</span> || size &gt; <span class="number">0x46F</span> )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;invalid size!\n&quot;</span>);</span><br><span class="line">  *(&amp;chunk_ptr + v1) = <span class="built_in">calloc</span>(<span class="number">1uLL</span>, size);</span><br><span class="line">  <span class="keyword">if</span> ( !*(&amp;chunk_ptr + v1) )</span><br><span class="line">    <span class="keyword">return</span> c_write(<span class="string">&quot;error!\n&quot;</span>);</span><br><span class="line">  chunk_size[v1] = size;</span><br><span class="line">  c_write(<span class="string">&quot;plz input your content:\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> read(<span class="number">0</span>, *(&amp;chunk_ptr + v1), chunk_size[v1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-house-of-emma学习以及复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -476,7 +637,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022-2024 <a href="https://1uckyc.github.io/" target="_blank">luckyc</a>
+    		&copy; 2022-2024 <a href="https://1uckyc.github.io/" target="_blank">1uckyc</a>
     	</div>
       	<div class="footer-right">
 			
