@@ -82,6 +82,8 @@
 				
 			
 				
+					<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+				
 			
 		</nav>
 		<nav class="header-nav">
@@ -461,6 +463,8 @@
       
     
       
+      
+      
     
     
 
@@ -470,9 +474,11 @@
       
         
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -486,16 +492,6 @@
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://github.com/1uckyc" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                GitHub
-              </a>
-            </li>
-          
-            <li class="search-li">
               <a href="https://blog.csdn.net/qq_70452545" target="_blank" 
                 class="search-title" >
                 
@@ -505,11 +501,28 @@
               </a>
             </li>
           
+            <li class="search-li">
+              <a href="https://guhuihey.github.io/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                ghh
+              </a>
+            </li>
+          
         </ul>
   		
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+        
+          
+  	  		<div class="aboutme-wrap" id="aboutme">小小pwner，可笑可笑</div>
+  	  	
+    	</section>
     
   </div>
   
