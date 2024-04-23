@@ -78,6 +78,12 @@
 			
 				<li><a href="/" >主页</a></li>
 			
+				<li><a href="/tags/iot/" >iot</a></li>
+			
+				<li><a href="/tags/cve/" >cve</a></li>
+			
+				<li><a href="/tags/pwn/" >pwn</a></li>
+			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -97,13 +103,13 @@
 			<div class="social">
 				
 					
-						<a class="github" href="https://github.com/1uckyc" 
-												title="GitHub" target="_blank"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" rel="noopener" href="https://github.com/1uckyc" 
+												title="GitHub" ><i class="icon-github"></i></a>
 					
 				
 					
-						<a class="csdn" href="https://blog.csdn.net/qq_70452545" 
-												title="CSDN" target="_blank"><i class="icon-csdn"></i></a>
+						<a class="csdn" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_70452545" 
+												title="CSDN" ><i class="icon-csdn"></i></a>
 					
 				
 			</div>
@@ -138,6 +144,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -157,10 +169,16 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/iot/">iot</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/cve/">cve</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/pwn/">pwn</a></li>
 		        
 				</ul>
 			</nav>
@@ -179,6 +197,90 @@
             
 
   
+    <article id="post-CVE-2023-27997环境搭建以及堆溢出复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/04/22/CVE-2023-27997%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%BA%A2%E5%87%BA%E5%A4%8D%E7%8E%B0/">CVE-2023-27997环境搭建以及堆溢出复现</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/04/22/CVE-2023-27997%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%BA%A2%E5%87%BA%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2024-04-22T08:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-22</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>这篇文章比较详细的分享了环境搭建以及漏洞原理，具体复现还在进行中，后续完成了会更新的 orz<br>参考了 <a target="_blank" rel="noopener" href="https://bestwing.me/CVE-2023-27997-FortiGate-SSLVPN-Heap-Overflow.html">swing师傅博客文章</a>  同时感谢xsh师傅的答疑解惑 orz</p>
+    
+    <a class="article-more-a" href="/2024/04/22/CVE-2023-27997%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%BA%A2%E5%87%BA%E5%A4%8D%E7%8E%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cve</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Dlink-DIR645溢出漏洞复现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,8 +289,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2024/03/11/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR645溢出漏洞复现</a>
-  
+	  <a class="article-title" href="/2024/03/11/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">Dlink-DIR645溢出漏洞复现</a>
+	
     </h1>
   
 
@@ -222,6 +324,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -260,8 +373,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank">Dlink-DIR815溢出漏洞复现</a>
-  
+	  <a class="article-title" href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">Dlink-DIR815溢出漏洞复现</a>
+	
     </h1>
   
 
@@ -295,6 +408,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -333,8 +457,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/" target="_blank">cve-2018-17066复现</a>
-  
+	  <a class="article-title" href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/">cve-2018-17066复现</a>
+	
     </h1>
   
 
@@ -368,6 +492,21 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cve</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -406,8 +545,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-cat学习以及复现</a>
-  
+	  <a class="article-title" href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-cat学习以及复现</a>
+	
     </h1>
   
 
@@ -441,6 +580,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -479,8 +629,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-emma学习以及复现</a>
-  
+	  <a class="article-title" href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-emma学习以及复现</a>
+	
     </h1>
   
 
@@ -514,6 +664,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -552,8 +713,8 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" target="_blank">house-of-wiki学习以及复现</a>
-  
+	  <a class="article-title" href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-wiki学习以及复现</a>
+	
     </h1>
   
 
@@ -587,6 +748,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -650,11 +822,11 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: true,
-		toc_hide_index: false,
+		open_in_new: false,
+		toc_hide_index: ture,
 		root: "/",
 		innerArchive: false,
-		showTags: true
+		showTags: false
 	}
 </script>
 
