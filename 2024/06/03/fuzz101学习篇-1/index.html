@@ -6,19 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://1uckyc.github.io">
-  <title>Archives | 1uckyc&#39;s blog</title>
+  <title>fuzz101学习篇_1 | 1uckyc&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Simple sharing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1uckyc&#39;s blog">
-<meta property="og:url" content="https://1uckyc.github.io/archives/index.html">
+  <meta name="description" content="记录一下学习fuzz使用、了解为主，环境为ubuntu20.4、工具为AFL++参考链接：[Fuzzing101&#x2F;Exercise 1 at main · antonio-morales&#x2F;Fuzzing101 (github.com)](https:&#x2F;&#x2F;github.com&#x2F;antonio-morales&#x2F;Fuzzing101&#x2F;tree&#x2F;main&#x2F;Exercise 1)[Fuz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fuzz101学习篇_1">
+<meta property="og:url" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/index.html">
 <meta property="og:site_name" content="1uckyc&#39;s blog">
-<meta property="og:description" content="Simple sharing">
+<meta property="og:description" content="记录一下学习fuzz使用、了解为主，环境为ubuntu20.4、工具为AFL++参考链接：[Fuzzing101&#x2F;Exercise 1 at main · antonio-morales&#x2F;Fuzzing101 (github.com)](https:&#x2F;&#x2F;github.com&#x2F;antonio-morales&#x2F;Fuzzing101&#x2F;tree&#x2F;main&#x2F;Exercise 1)[Fuz">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240603153836775.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604145545879.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604152943326.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604153321655.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155205134.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155405209.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155330448.png">
+<meta property="og:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155441060.png">
+<meta property="article:published_time" content="2024-06-03T07:31:41.000Z">
+<meta property="article:modified_time" content="2024-06-08T11:07:06.139Z">
 <meta property="article:author" content="1uckyc">
+<meta property="article:tag" content="fuzz">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240603153836775.png">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -190,41 +202,140 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-fuzz101学习篇-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/" class="archive-article-date">
-        <time datetime="2024-06-03T07:31:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/">fuzz101学习篇_1</a>
-	
+    <h1 class="article-title" itemprop="name">
+      fuzz101学习篇_1
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/" class="archive-article-date">
+        <time datetime="2024-06-03T07:31:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">941字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>记录一下学习fuzz使用、了解为主，环境为ubuntu20.4、工具为AFL++<br>参考链接：<br>[Fuzzing101&#x2F;Exercise 1 at main · antonio-morales&#x2F;Fuzzing101 (github.com)](<a target="_blank" rel="noopener" href="https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise">https://github.com/antonio-morales/Fuzzing101/tree/main/Exercise</a> 1)<br>[Fuzzing101 Exercise 1 - Xpdf学习笔记_xpdf漏洞复现-CSDN博客](<a target="_blank" rel="noopener" href="https://hollk.blog.csdn.net/article/details/122064015%EF%BC%89">https://hollk.blog.csdn.net/article/details/122064015）</a><br>[<a target="_blank" rel="noopener" href="https://www.du4t.cn/post/26#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">CVE] Xpdf CVE-2019-13288 漏洞分析 (du4t.cn)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cx1ng/p/17362844.html">Fuzzing101-Exercise1 fuzz xpdf CVE-2019-13288 - 辰星-cxing - 博客园 (cnblogs.com)</a></p>
+<span id="more"></span>
+
+<h4 id="ALF工具下载"><a href="#ALF工具下载" class="headerlink" title="ALF工具下载"></a>ALF工具下载</h4><p>依赖安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools</span><br><span class="line"></span><br><span class="line">sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang </span><br><span class="line"></span><br><span class="line">sudo apt-get install -y gcc-$(gcc --version|<span class="built_in">head</span> -n1|sed <span class="string">&#x27;s/.* //&#x27;</span>|sed <span class="string">&#x27;s/\..*//&#x27;</span>)-plugin-dev libstdc++-$(gcc --version|<span class="built_in">head</span> -n1|sed <span class="string">&#x27;s/.* //&#x27;</span>|sed <span class="string">&#x27;s/\..*//&#x27;</span>)-dev</span><br></pre></td></tr></table></figure>
+<p>AFL++安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/AFLplusplus/AFLplusplus &amp;&amp; <span class="built_in">cd</span> AFLplusplus</span><br><span class="line"><span class="built_in">export</span> LLVM_CONFIG=<span class="string">&quot;llvm-config-11&quot;</span></span><br><span class="line">make distrib</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>下载 Xpdf 3.02：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz</span><br><span class="line">tar -xvzf xpdf-3.02.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="Xpdf安装："><a href="#Xpdf安装：" class="headerlink" title="Xpdf安装："></a>Xpdf安装：</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> xpdf-3.02</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install -y build-essential gcc</span><br><span class="line">./configure --prefix=<span class="string">&quot;<span class="variable">$HOME</span>/fuzzing_xpdf/install/&quot;</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>Xpdf is a free PDF viewer and toolkit, including a text extractor, image converter, HTML converter, and more. Most of the tools are available as open source.<br>Xpdf是一个免费的PDF查看器和工具包，包括一个文本提取器， 图像转换器、HTML 转换器等。大多数工具都是作为开源提供。<br>然后可以下载一些pdf示例:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf</span><br><span class="line">wget http://www.africau.edu/images/default/sample.pdf</span><br><span class="line">wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file.pdf</span><br></pre></td></tr></table></figure>
+
+<p>查看PDF文件信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HOME</span>/fuzzing_xpdf/install/bin/pdfinfo -box -meta <span class="variable">$HOME</span>/fuzzing_xpdf/pdf_examples/helloworld.pdf</span><br><span class="line">-box 输出PDF文件每个页面的边界框信息</span><br><span class="line">-meta 输出PDF文件元数据信息，如标题、作者、日期等</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240603153836775.png" alt="image-20240603153836775"></p>
+<h4 id="AFL-使用"><a href="#AFL-使用" class="headerlink" title="AFL++使用"></a>AFL++使用</h4><p>清除之前的编译的目标文件和可执行文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r <span class="variable">$HOME</span>/fuzzing_xpdf/install</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br></pre></td></tr></table></figure>
+
+<p>使用 afl-clang-fast 编译器构建 xpdf：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LLVM_CONFIG=<span class="string">&quot;llvm-config-11&quot;</span></span><br><span class="line">CC=<span class="variable">$HOME</span>/AFLplusplus/afl-clang-fast CXX=<span class="variable">$HOME</span>/AFLplusplus/afl-clang-fast++ ./configure --prefix=<span class="string">&quot;<span class="variable">$HOME</span>/fuzzing_xpdf/install/&quot;</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>开始fuzz : 对xpdf 软件包中的 <code>pdftotext</code> 工具进行模糊测试</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afl-fuzz -i <span class="variable">$HOME</span>/fuzzing_xpdf/pdf_examples/ -o <span class="variable">$HOME</span>/fuzzing_xpdf/out/ -s 123 -- <span class="variable">$HOME</span>/fuzzing_xpdf/install/bin/pdftotext @@ <span class="variable">$HOME</span>/fuzzing_xpdf/output</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>-i $HOME/fuzzing_xpdf/pdf_examples/</code><ul>
+<li>指定输入目录为 <code>$HOME/fuzzing_xpdf/pdf_examples/</code>。这个目录里包含了一些 PDF 文件,作为模糊测试的种子输入。</li>
+</ul>
+</li>
+<li><code>-o $HOME/fuzzing_xpdf/out/</code><ul>
+<li>指定输出目录为 <code>$HOME/fuzzing_xpdf/out/</code>。AFL++ 将把测试过程中发现的崩溃和有趣的测试用例保存在这个目录下。</li>
+</ul>
+</li>
+<li><code>-s 123</code><ul>
+<li>设置随机数种子为 123。这样做可以确保每次运行都使用相同的种子,方便重现测试结果。</li>
+</ul>
+</li>
+<li><code>-- $HOME/fuzzing_xpdf/install/bin/pdftotext @@ $HOME/fuzzing_xpdf/output</code><ul>
+<li>这是 AFL++ 的目标程序和参数。</li>
+<li><code>$HOME/fuzzing_xpdf/install/bin/pdftotext</code> 是要进行模糊测试的 <code>pdftotext</code> 工具的路径。</li>
+<li><code>@@</code> 是 AFL++ 的特殊占位符,代表要被替换为模糊测试用例的位置。</li>
+<li><code>$HOME/fuzzing_xpdf/output</code> 是 <code>pdftotext</code> 的输出目录。</li>
+</ul>
+</li>
+</ol>
+<p>可能会出现如下提示：<br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604145545879.png" alt="image-20240604145545879"><br>要关闭系统的核心转储，确保fuzz过程出现crash也不会中止程序</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line"><span class="built_in">echo</span> core &gt; /proc/sys/kernel/core_pattern</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就可以进行fuzz了<br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604152943326.png" alt="image-20240604152943326"></p>
+<h4 id="GDB验证结果"><a href="#GDB验证结果" class="headerlink" title="GDB验证结果"></a>GDB验证结果</h4><p>可以在out目录下看到fuzz结果<br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240604153321655.png" alt="image-20240604153321655"><br>我们可以重新正常编译一下xpdf，然后用gdb去调试</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r <span class="variable">$HOME</span>/fuzzing_xpdf/install</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line">CFLAGS=<span class="string">&quot;-g -O0&quot;</span> CXXFLAGS=<span class="string">&quot;-g -O0&quot;</span> ./configure --prefix=<span class="string">&quot;<span class="variable">$HOME</span>/fuzzing_xpdf/install/&quot;</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>gdb运行    (这是一条命令)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb --args ./pdftotext ~/fuzzing_xpdf/out/default/crashes/id:000000,sig:11,src:000922,time:98942,execs:98978,op:havoc,rep:2 ~/fuzzing_xpdf/output</span><br><span class="line">或者</span><br><span class="line">gdb ./pdftotext</span><br><span class="line">run <span class="built_in">id</span>:000000,sig:11,src:000922,time:98942,execs:98978,op:havoc,rep:2</span><br></pre></td></tr></table></figure>
+
+<p>然后直接run，再bt查看就可以发现程序一直循环执行<code>Parser::getObj</code><br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155205134.png" alt="image-20240608155205134"><br>可以到源码中找到<br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155405209.png" alt="image-20240608155405209"><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155330448.png" alt="image-20240608155330448"><br>跟进到PDFDoc源码看一下<br><img src="/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/image-20240608155441060.png" alt="image-20240608155441060"></p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          1uckyc
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://1uckyc.github.io/2024/06/03/fuzz101学习篇-1/" title="fuzz101学习篇_1" target="_blank">https://1uckyc.github.io/2024/06/03/fuzz101学习篇-1/</a>
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -236,377 +347,120 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://1uckyc.github.io/2024/06/03/fuzz101%E5%AD%A6%E4%B9%A0%E7%AF%87-1/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/05/20/CVE-2023-27997%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8%EF%BC%88%E7%BB%AD%EF%BC%89/" class="archive-article-date">
-        <time datetime="2024-05-20T10:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-20</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/05/20/CVE-2023-27997%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8%EF%BC%88%E7%BB%AD%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CVE-2023-27997堆溢出利用（续）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/05/20/CVE-2023-27997%E5%A0%86%E6%BA%A2%E5%87%BA%E5%88%A9%E7%94%A8%EF%BC%88%E7%BB%AD%EF%BC%89/">CVE-2023-27997堆溢出利用（续）</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cve</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#ALF%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">ALF工具下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Xpdf%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Xpdf安装：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AFL-%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">AFL++使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GDB%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">GDB验证结果</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/04/22/CVE-2023-27997%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%BA%A2%E5%87%BA%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-04-22T08:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/04/22/CVE-2023-27997%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%BA%A2%E5%87%BA%E5%A4%8D%E7%8E%B0/">CVE-2023-27997环境搭建以及堆溢出复现</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cve</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/11/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-03-11T13:43:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/11/Dlink-DIR645%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">Dlink-DIR645溢出漏洞复现</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2024-02-25T12:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-25</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/02/25/Dlink-DIR815%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">Dlink-DIR815溢出漏洞复现</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2023-11-24T14:08:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/24/cve-2018-17066%E5%A4%8D%E7%8E%B0/">cve-2018-17066复现</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cve</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2023-09-24T15:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/09/24/house-of-cat%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-cat学习以及复现</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2023-09-17T10:02:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-17</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/09/17/house-of-emma%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-emma学习以及复现</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2023-09-03T15:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/09/03/house-of-wiki%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%8F%8A%E5%A4%8D%E7%8E%B0/">house-of-wiki学习以及复现</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pwn</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -635,8 +489,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
